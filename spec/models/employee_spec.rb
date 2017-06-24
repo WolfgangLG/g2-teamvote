@@ -14,4 +14,16 @@ RSpec.describe Employee, type: :model do
       expect(employee).to have_attributes(name: employee.name)
     end
   end
+
+  describe "find_employees" do
+    it "receives response from g2 employee endpoint" do
+      stub_request(:get, 'https://api.myjson.com/bins/16roa3')
+        .to_return(
+            body: File.read(Rails.root.join("spec", "stubbed_requests", "g2_employees.json")),
+            headers: {"Content-Type" => "application/json"}
+        )
+      answer = Employee.find_employees
+      expect(answer[0]["name"]).to eq("Michael Wheeler")
+    end
+  end
 end

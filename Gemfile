@@ -21,6 +21,7 @@ gem 'turbolinks'
 gem 'foundation-rails'
 gem 'figaro'
 gem 'httparty'
+gem 'webmock'
 
 group :development, :test do
   gem 'byebug'
