@@ -2,10 +2,15 @@ require 'rails_helper'
 
 RSpec.describe EmployeesController, type: :controller do
   let(:g2_employees) { File.read(Rails.root.join("spec", "stubbed_requests", "g2_employees.json")) }
+  let!(:employee) { FactoryGirl.create(:employee) }
 
   describe "GET #index" do
-    it "should be successful and call Employee#find_employees" do
-      expect(Employee).to receive(:find_employees).and_return(g2_employees)
+    it "assigns all employees as @employees" do
+      get :index
+      expect(assigns(:employees).last).to eq(employee)
+    end
+
+    it "should respond with HTTP success" do
       get :index
       expect(response).to have_http_status(200)
     end
