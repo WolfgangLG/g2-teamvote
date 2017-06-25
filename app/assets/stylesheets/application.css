@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
+
+h1 {
+    color: rgb(232,97,56);
+}

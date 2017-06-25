@@ -1,22 +1,22 @@
-<h1>Employees#index</h1>
-<p>Find me in app/views/employees/index.html.erb</p>
+<div class="row hero-section">
+  <div class="hero-section-text">
+    <h1>G2 Crowd Team Roster</h1>
+  </div>
+  <hr>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Bio</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employees.each do |employee| %>
-    <tr>
-      <td><%= employee['name'] %></td>
-      <td><%= employee['title'] %></td>
-      <td><%= employee['bio'] %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="section">
+  <% @employees.each do |employee| %>
+    <div class="row">
+      <div class="small-12 medium-3 columns">
+        <%= image_tag(employee['image_url'], class: 'employee_photo') %>
+      </div>
+      <div class="small-12 medium-9 columns">
+        <%= content_tag(:h3, employee['name'], class: 'employee_name') %>
+        <%= content_tag(:h4, employee['title'], class: 'employee_title') %>
+        <%= content_tag(:p, employee['bio'], class: 'employee_bio') %>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>
