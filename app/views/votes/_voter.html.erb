@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="small-12 columns">
+    <p>
+      <strong>Want to work with <%= employee.name %>?</strong>
+      <%= link_to(raw("<span class='thumb-button'> #{image_tag('thumbs-up.svg', class: 'thumbs-up')} Yes!</span>"), employee_up_vote_path(employee), method: :post ) %>
+    </p>
+    <p><%= pluralize(employee.up_votes, 'visitor') %> said "Yes!"</p>
+  </div>
+</div>

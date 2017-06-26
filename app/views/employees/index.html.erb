@@ -15,6 +15,7 @@
         <%= content_tag(:h3, employee['name'], class: 'employee_name') %>
         <%= content_tag(:h4, employee['title'], class: 'employee_title') %>
         <%= content_tag(:p, employee['bio'], class: 'employee_bio') %>
+        <%= render partial: 'votes/voter', locals: { employee: employee } %>
       </div>
     </div>
     <hr>
