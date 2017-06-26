@@ -1,5 +1,7 @@
 class Employee < ActiveRecord::Base
 
+  has_many :votes, dependent: :destroy
+
   def self.find_employees
     response = HTTParty.get("https://api.myjson.com/bins/16roa3")
     team_members = JSON.parse(response.body)
@@ -13,5 +15,17 @@ class Employee < ActiveRecord::Base
       end
       team_member
     end
+  end
+
+  def up_votes
+    votes.where(value: 1).count
+  end
+
+  def down_votes
+    votes.where(value: -1).count
+  end
+
+  def points
+    votes.sum(:value)
   end
 end
