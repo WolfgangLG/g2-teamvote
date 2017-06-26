@@ -13,13 +13,7 @@ class VotesController < ApplicationController
 
   def update_vote(new_value)
     @employee = Employee.find(params[:employee_id])
-    @vote = @employee.votes.last
-
-    if @vote
-      @vote.update_attribute(:value, new_value)
-    else
-      @vote = Vote.create(value: new_value, employee: @employee)
-    end
+    @vote = Vote.create(value: new_value, employee: @employee)
   end
 
 end
